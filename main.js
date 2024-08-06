@@ -6,79 +6,58 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "A reciclagem de biodegradáveis pode ser integrada ao transporte público?",
+        enunciado = "Como a música de um artista pode promover o respeito e a conscientização sobre a inclusão e a caça ilegal que leva à extinção de animais?" ,
         alternativas: [
             {
-                texto: "Sim",
-                afirmacao: "Porque pode diminuir a quantidade de roupas no lixo."
+               texto: "Sim",
+               afirmação: "afirmação"
             },
             {
                 texto: "Não",
-                afirmacao: "Porque uma coisa não tem nada a ver com a outra."
+                afirmação: "afirmação"
             }
         ]
     },
     {
-        enunciado: "Deve-se colocar lixeiras para resíduos biodegradáveis em estações de transporte público?",
+        enunciado = "A acessibilidade, a diversidade musical e o crescimento urbano desenfreado impactam a inclusão social e a preservação de espécie ameaçadas?" ,
         alternativas: [
             {
-                texto: "Sim",
-                afirmacao: "Porque facilita a separação de resíduos."
+               texto: "Sim",
+               afirmação: "afirmação"
             },
             {
                 texto: "Não",
-                afirmacao: "Porque pode ser mal utilizado pelos usuários."
+                afirmação: "afirmação"
             }
         ]
     },
-    {
-        enunciado: "Após a elaboração do trabalho escrito, a professora realizou um debate entre a turma para entender como foi realizada a pesquisa e escrita. Nessa conversa também foi levantado um ponto muito importante: como a IA impacta o trabalho do futuro. Nesse debate, como você se posiciona?",
-        alternativas: [
-            {
-                texto: "Defende a ideia de que a IA pode criar novas oportunidades de emprego e melhorar habilidades humanas.",
-                afirmacao: "afirmação"
-            },
-            {
-                texto: "Me preocupo com as pessoas que perderão seus empregos para máquinas e defendem a importância de proteger os trabalhadores.",
-                afirmacao: "afirmação"
-            }
-        ]
-    },
-    {
-        enunciado: "Ao final da discussão, você precisou criar uma imagem no computador que representasse o que pensa sobre IA. E agora?",
-        alternativas: [
-            {
-                texto: "Criar uma imagem utilizando uma plataforma de design como o Paint.",
-                afirmacao: "afirmação"
-            },
-            {
-                texto: "Criar uma imagem utilizando um gerador de imagem de IA.",
-                afirmacao: "afirmação"
-            }
-        ]
-    },
-    {
-        enunciado: "Você tem um trabalho em grupo de biologia para entregar na semana seguinte, o andamento do trabalho está um pouco atrasado e uma pessoa do seu grupo decidiu fazer com ajuda da IA. O problema é que o trabalho está totalmente igual ao do chat. O que você faz? ",
-        alternativas: [
-            {
-                texto: "Escrever comandos para o chat é uma forma de contribuir com o trabalho, por isso não é um problema utilizar o texto inteiro.",
-                afirmacao: "afirmação"
-            },
-            {
-                texto: "O chat pode ser uma tecnologia muito avançada, mas é preciso manter a atenção pois toda máquina erra, por isso revisar o trabalho e contribuir com as perspectivas pessoais é essencial.",
-                afirmacao: "afirmação"
-            }
-        ]
-    },
-];
+    { 
+        enunciado = "Como a tecnologia assistiva está sendo aplicada para promover inclusão, a música como instrumento de conscientização e a luta contra o desmatamento para evitar a extinção de animais?" ,
+    alternativas: [
+        {
+           texto: "Sim",
+           afirmação: "afirmação"
+        },
+        {
+            texto: "Não",
+            afirmação: "afirmação"
+        }
+    ]
+    }
+]
 
 let atual = 0;
 let perguntaAtual;
 let historiaFinal = "";
 
-function mostraPergunta() {
+function mostraPergunta(){
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
     mostraAlternativas();
 }
 
@@ -88,14 +67,6 @@ function mostraAlternativas(){
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
+
     }
 }
-
-function respostaSelecionada(opcaoSelecionada){
-    const afirmacoes = opcaoSelecionada.afirmacoes;
-    historiaFinal = afirmacoes;
-    atual++;
-    mostraPergunta();
-}
-
-mostraPergunta();
